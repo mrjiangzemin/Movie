@@ -17,7 +17,7 @@
 
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>鹰眼电影</title>
+    <title>南大电影</title>
 </head>
 <body>
  	<!-- 导航栏 -->
@@ -29,37 +29,11 @@
                 </h1>
                 <div class="nav">
                     <ul>
-                        <li><a href="./mainPage.jsp">首页</a></li>
-                        <li class="active"><a href="./movieList.jsp">电影</a></li>
-                        <li><a href="javascript:void(0)">影院</a></li>
-                        <li><a href="javascript:void(0)">榜单</a></li>
+                        <li><a href="./manage.jsp">影院管理系统</a></li>
                     </ul>
                 </div>
-                <div class="app-download">
-                </div>
-                <div class="user-info">
-                <div class="user-avatar J-login">
-                    <ul class="layui-nav" style="background-color: #fff;">
-                        <li class="layui-nav-item header-li" style="width:40px;" lay-unselect="" style="width: 40px;">
-                        </li>
-                    </ul>
-                </div>
-                </div>
-                <form action="">
-                    <input name="searchMovie" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
-                <input class="submit" type="submit" value="">
-                </form>
             </div>
         </div>
     </div>
-
-    <script>
-        var clientHeight = document.documentElement.clientHeight;
-        window.onload = function(){
-            initHeader();
-        }
-
-        
-    </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <%
 	User user = (User)request.getSession().getAttribute("user");
 	if(user == null){
-		response.sendRedirect("./mainPage.jsp");
+		response.sendRedirect("./login.jsp");
 //	}else{
 //        if(user.getUser_role() != 1){
  //           response.sendRedirect("./mainPage.jsp");
@@ -31,7 +31,7 @@
     <script src="../static/js/Api.js"></script>
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>鹰眼电影-后台管理</title>
+    <title>南大电影-后台管理</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->
@@ -602,7 +602,7 @@
                             "<div class=\"movie-item\">" +
                                 "<a href=\"javascript:void(0)\" target=\"_blank\" data-act=\"playingMovie-click\" data-val=\""+ obj.data[i].movie_id +"\">" +
                                     "<div class=\"movie-poster\">" +
-                                        "<img src=\""+ obj.data[i].movie_picture +"\" onclick=\"movieDetail("+obj.data[i].movie_id+")\">" +
+                                        "<img src=\""+ obj.data[i].movie_picture +"\">" +
                                         "<div class=\"movie-overlay movie-overlay-bg\">" +
                                             "<div class=\"movie-info\">" +
                                                 "<div class=\"movie-score\"><i class=\"integer\">"+ obj.data[i].movie_score +"</i></div>" +

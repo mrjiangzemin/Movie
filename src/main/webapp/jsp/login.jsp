@@ -16,7 +16,7 @@
     <link href="../static/css/login.css" rel="stylesheet">
 
     <script></script>
-    <title>鹰眼电影-登录注册</title>
+    <title>南大电影-管理系统</title>
 </head>
 <body>
 
@@ -24,8 +24,8 @@
     <div class="screen">
         <img class="big_logo"><br/>
         <label class="title">南 大 电 影</label><br/>
-        <label class="ineer_one">回首向来风雨茶香里</label><br/>
-        <label class="ineer_two">眸中一点可是思念谁</label>
+        <label class="ineer_one">格物致新</label><br/>
+        <label class="ineer_two">厚德泽人</label>
     </div>
     <!-- 登录页 -->
     <div class="content" style="float: left;">
@@ -158,7 +158,7 @@
                         else{
                             localStorage.setItem("userJson",JSON.stringify(obj.data));
                           // sessionStorage.set
-                            window.location.href="./mainPage.jsp";
+                            window.location.href="./manage.jsp";
                         }
                     },
                     error:function(){
