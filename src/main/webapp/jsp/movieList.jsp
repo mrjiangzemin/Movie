@@ -20,7 +20,7 @@
 
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>鹰眼电影-电影</title>
+    <title>南大电影-电影</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->
