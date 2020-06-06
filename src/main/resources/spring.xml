@@ -18,9 +18,17 @@
 		
 	<!-- 引入属性文件，获取配置参数 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-		<property name="location" value="classpath:mysql.properties" /> 
+		<property name="location" value="classpath:mysql.properties" />
+		<property name="properties" ref="configProperties" />
 	</bean>
-	
+
+	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:Config.properties</value>
+			</list>
+		</property>
+	</bean>
 	 <!-- 使用阿里巴巴的数据库连接池 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"  destroy-method="close">  
 		<property name="driverClassName" value="${driver}" />  

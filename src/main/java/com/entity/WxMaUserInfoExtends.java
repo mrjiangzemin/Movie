@@ -2,7 +2,7 @@ package com.entity;
 
 import java.util.Date;
 
-public class WxMaUserInfoExtends {
+public class WxMaUserInfoExtends{
     private String user_id;
 
     private String openId;
@@ -102,5 +102,22 @@ public class WxMaUserInfoExtends {
 
     public void setCreate_date(Date create_date) {
         this.create_date = create_date;
+    }
+
+    @Override
+    public String toString() {
+        return "WxMaUserInfoExtends{" +
+                "user_id='" + user_id + '\'' +
+                ", openId='" + openId + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", language='" + language + '\'' +
+                ", city='" + city + '\'' +
+                ", province='" + province + '\'' +
+                ", country='" + country + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                ", unionId='" + unionId + '\'' +
+                ", create_date=" + create_date +
+                '}';
     }
 }

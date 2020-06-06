@@ -8,13 +8,13 @@ public class WxMaAuthResult extends WxMaJscode2SessionResult {
 
     private String token;
 
-    private int expiresIn = -1;
+    private int expiresIn = 3600;
 
     Boolean isReg = false; //是否保存过用户信息
 
     private boolean success;
 
-    private WxMaUserInfoExtends wxMaUserInfoExtends;
+    private WxMaUserInfoExtends userInfo;
 
 
 
@@ -58,11 +58,15 @@ public class WxMaAuthResult extends WxMaJscode2SessionResult {
         isReg = reg;
     }
 
-    public WxMaUserInfoExtends getWxMaUserInfoExtends() {
-        return wxMaUserInfoExtends;
+    public void setReg(Boolean reg) {
+        isReg = reg;
     }
 
-    public void setWxMaUserInfoExtends(WxMaUserInfoExtends wxMaUserInfoExtends) {
-        this.wxMaUserInfoExtends = wxMaUserInfoExtends;
+    public WxMaUserInfoExtends getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(WxMaUserInfoExtends userInfo) {
+        this.userInfo = userInfo;
     }
 }
