@@ -94,7 +94,7 @@
     </set>
     where seat_id = #{seatId,jdbcType=INTEGER}
   </update>
-  <update id="updateSeatStatus" parameterType="com.java.lang.String">
+  <update id="updateSeatStatus" parameterType="String">
     UPDATE SEAT A
     SET A.status = '1'
     WHERE A.seat_id = #{seatId}
