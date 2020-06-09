@@ -18,5 +18,7 @@ public interface SeatMapper {
 
     int updateByPrimaryKey(Seat record);
 
+    void updateSeatStatus(@Param("seatId") String seatId);
+
     List<Seat> selectBySchedule(@Param("schedule") String schedule);
 }

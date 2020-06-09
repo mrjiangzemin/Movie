@@ -31,7 +31,6 @@ public class WeixinMaServiceImp implements WeixinMaService {
 
 
     @Override
-
     public WxMaAuthResult dealLoginAuth(String code, String data, String iv) {
         WxMaJscode2SessionResult session = new WxMaJscode2SessionResult();
         //调微信官方接口获得sesssion_key openid存到 session对象里

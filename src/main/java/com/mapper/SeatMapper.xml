@@ -94,6 +94,11 @@
     </set>
     where seat_id = #{seatId,jdbcType=INTEGER}
   </update>
+  <update id="updateSeatStatus" parameterType="com.java.lang.String">
+    UPDATE SEAT A
+    SET A.status = '1'
+    WHERE A.seat_id = #{seatId}
+  </update>
   <update id="updateByPrimaryKey" parameterType="com.entity.Seat" >
     update seat
     set schedule_id = #{scheduleId,jdbcType=INTEGER},

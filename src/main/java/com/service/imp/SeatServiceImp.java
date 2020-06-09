@@ -18,4 +18,9 @@ public class SeatServiceImp implements ISeatService {
     public List<Seat> getSeatsBySchedule(String schedule) {
         return seatMapper.selectBySchedule(schedule);
     }
+
+    @Override
+    public void updateSeatStatus(String seatId) {
+        seatMapper.updateSeatStatus(seatId);
+    }
 }

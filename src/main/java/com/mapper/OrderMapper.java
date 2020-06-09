@@ -2,6 +2,7 @@ package com.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.entity.Order;
@@ -10,6 +11,7 @@ import com.entity.Order;
 public interface OrderMapper {
 	Order findOrderById(String order_id);
 	Integer addOrder(Order order);
+	Integer addOrders(Order order);
 	Integer updateOrderStateToRefund(String order_id); //申请退票
 	Integer updateOrderStateToRefunded(String order_id); //同意退票
 	List<Order> findRefundOrderByUserName(String user_name);
@@ -17,5 +19,5 @@ public interface OrderMapper {
 	List<Order> findAllOrders();
 	List<Order> findOrdersByScheduleId(long schedule_id);
 	List<Order> findOrdersByState(int order_state);
-	
+	List<Order> findOrderByOpenId(@Param("openId") String openId);
 }

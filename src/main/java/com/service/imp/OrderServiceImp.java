@@ -53,7 +53,12 @@ public class OrderServiceImp implements IOrderService{
 		}
 		return order;
 	}
-	
+
+	@Override
+	public List<Order> findOrdersByOpenId(String openId) {
+		return orderMapper.findOrderByOpenId(openId);
+	}
+
 	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	@Override
 	public List<Order> findRefundOrderByUserName(String user_name) {
@@ -79,7 +84,13 @@ public class OrderServiceImp implements IOrderService{
 	public Integer addOrder(Order order) {
 		return this.orderMapper.addOrder(order);
 	}
-	
+
+
+	@Override
+	public Integer addOrders(Order order) {
+		return this.orderMapper.addOrders(order);
+	}
+
 	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
 	@Override
 	public Integer updateOrderStateToRefund(String order_id) {

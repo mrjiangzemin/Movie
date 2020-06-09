@@ -41,7 +41,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into orderinfo(order_id,order_position,schedule_id,user_id,order_price,order_time)
 		values(#{order_id},#{order_position},#{schedule_id},#{user_id},#{order_price},#{order_time})
 	</insert>
-	
+	<insert id="addOrders" parameterType="com.entity.Order">
+		insert into orderinfo(order_position,schedule_id,user_id,order_price,order_time)
+		values(#{order_position},#{schedule_id},#{user_id},#{order_price},#{order_time})
+	</insert>
 	<update id="updateOrderStateToRefund" parameterType="java.lang.String">
 		update orderinfo set order_state = 0 where order_id = #{order_id}
 	</update>
@@ -49,4 +52,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateOrderStateToRefunded" parameterType="java.lang.String">
 		update orderinfo set order_state = 2 where order_id = #{order_id}
 	</update>
+	<select id="findOrderByOpenId" statementType="PREPARED" resultMap="BaseResultMap">
+		SELECT *
+		FROM ORDER A
+		WHERE A.user_id = (SELECT B.user_id FROM user B WHERE B.openid = #{openId})
+	</select>
 </mapper>

@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.entity.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.service.IMovieService;
+import com.service.IOrderService;
 import com.service.ISeatService;
 import com.service.WeixinMaService;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -37,6 +39,8 @@ public class WeChatController {
     @Autowired
     private ISeatService iSeatService;
 
+    @Autowired
+    private IOrderService iOrderService;
 
     /**
      * 获取所有电影信息
@@ -86,5 +90,25 @@ public class WeChatController {
         return obj;
     }
 
+    @RequestMapping(value = "/orders/{openId}")
+    @ResponseBody
+    public JSONObject getOrders(@PathVariable("openId") String id) {
+        JSONObject obj = new JSONObject();
+        List<Order> orders = iOrderService.findOrdersByOpenId(id);
+        obj.put("data", orders);
+        return obj;
+    }
 
+    @RequestMapping(value = "/addOrder")
+    @ResponseBody
+    public JSONObject addOrder(@RequestBody Order order) {
+        try {
+            iOrderService.addOrders(order);
+            iSeatService.updateSeatStatus(order.getSeat_id());
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
+
+        return null;
+    }
 }

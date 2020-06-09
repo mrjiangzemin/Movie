@@ -16,9 +16,23 @@ public class Order {
 	private int order_state;  //订单状态 0：退票中 -1：无法退票  1：已支付 2：退票成功
 	private int order_price; //订单价格
 	private Date order_time; //订单支付时间
+	private String seat_id; //座位id
 	private User order_user;   //所属用户对象
 	private Schedule order_schedule; //所属电影场次
-	
+
+	public Order(){
+
+	}
+
+	public Order(long user_id, long schedule_id, String order_position, int order_state, int order_price, Date order_time) {
+		this.user_id = user_id;
+		this.schedule_id = schedule_id;
+		this.order_position = order_position;
+		this.order_state = order_state;
+		this.order_price = order_price;
+		this.order_time = order_time;
+	}
+
 	public String getOrder_id() {
 		return order_id;
 	}
@@ -73,6 +87,12 @@ public class Order {
 	public void setOrder_schedule(Schedule order_schedule) {
 		this.order_schedule = order_schedule;
 	}
-	
-	
+
+	public String getSeat_id() {
+		return seat_id;
+	}
+
+	public void setSeat_id(String seat_id) {
+		this.seat_id = seat_id;
+	}
 }

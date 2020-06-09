@@ -14,4 +14,11 @@ public interface ISeatService {
      */
     @Transactional(readOnly = true)
     List<Seat> getSeatsBySchedule(String schedule);
+
+    /**
+     * 更新座位状态
+     * @param seatId
+     */
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    void updateSeatStatus(String seatId);
 }

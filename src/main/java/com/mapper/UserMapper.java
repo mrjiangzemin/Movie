@@ -2,6 +2,7 @@ package com.mapper;
 
 import java.util.List;
 
+import com.entity.Order;
 import org.springframework.stereotype.Repository;
 
 import com.entity.User;
@@ -14,4 +15,5 @@ public interface UserMapper {
 	List<User> findAllUser();
 	List<User> findUserByName(String name);
 	List<User> findUserLikeName(String name);
+
 }
