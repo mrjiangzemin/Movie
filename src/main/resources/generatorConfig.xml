@@ -5,30 +5,30 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="C:\Program Files\MySQL\mysql-connector-java-8.0.20\mysql-connector-java-8.0.20.jar"/>
+            location="F:\MAPSQL\mysql-connector-java-5.1.25.jar"/>
     <context id="my" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/movie?serverTimezone=UTC" userId="root"
-                        password="nnq456YYX"/>
+                        password="123456"/>
 
         <javaModelGenerator targetPackage="com.entity"
-                            targetProject="C:\Users\JackYang\Desktop\Movie-master\src\main\java">
+                            targetProject="D:\Ideapoj\Movie\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="com.mapper"
-                         targetProject="C:\Users\JackYang\Desktop\Movie-master\src\main\java">
+                         targetProject="D:\Ideapoj\Movie\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <javaClientGenerator targetPackage="com.mapper"
-                             targetProject="C:\Users\JackYang\Desktop\Movie-master\src\main\java" type="XMLMAPPER">
+                             targetProject="D:\Ideapoj\Movie\src\main\java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -37,7 +37,7 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"/>-->
 
-        <table tableName="customer" domainObjectName="Customer"
+        <table tableName="user" domainObjectName="NCUUser"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

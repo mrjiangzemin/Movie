@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.SeatMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Seat" >
+    <id column="seat_id" property="seatId" jdbcType="INTEGER" />
+    <result column="schedule_id" property="scheduleId" jdbcType="INTEGER" />
+    <result column="columnIndex" property="columnindex" jdbcType="INTEGER" />
+    <result column="label" property="label" jdbcType="VARCHAR" />
+    <result column="rowIndex" property="rowindex" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seat_id, schedule_id, columnIndex, label, rowIndex, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from seat
+    where seat_id = #{seatId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from seat
+    where seat_id = #{seatId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Seat" >
+    insert into seat (seat_id, schedule_id, columnIndex, 
+      label, rowIndex, status
+      )
+    values (#{seatId,jdbcType=INTEGER}, #{scheduleId,jdbcType=INTEGER}, #{columnindex,jdbcType=INTEGER}, 
+      #{label,jdbcType=VARCHAR}, #{rowindex,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Seat" >
+    insert into seat
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seatId != null" >
+        seat_id,
+      </if>
+      <if test="scheduleId != null" >
+        schedule_id,
+      </if>
+      <if test="columnindex != null" >
+        columnIndex,
+      </if>
+      <if test="label != null" >
+        label,
+      </if>
+      <if test="rowindex != null" >
+        rowIndex,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seatId != null" >
+        #{seatId,jdbcType=INTEGER},
+      </if>
+      <if test="scheduleId != null" >
+        #{scheduleId,jdbcType=INTEGER},
+      </if>
+      <if test="columnindex != null" >
+        #{columnindex,jdbcType=INTEGER},
+      </if>
+      <if test="label != null" >
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="rowindex != null" >
+        #{rowindex,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Seat" >
+    update seat
+    <set >
+      <if test="scheduleId != null" >
+        schedule_id = #{scheduleId,jdbcType=INTEGER},
+      </if>
+      <if test="columnindex != null" >
+        columnIndex = #{columnindex,jdbcType=INTEGER},
+      </if>
+      <if test="label != null" >
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="rowindex != null" >
+        rowIndex = #{rowindex,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where seat_id = #{seatId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Seat" >
+    update seat
+    set schedule_id = #{scheduleId,jdbcType=INTEGER},
+      columnIndex = #{columnindex,jdbcType=INTEGER},
+      label = #{label,jdbcType=VARCHAR},
+      rowIndex = #{rowindex,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where seat_id = #{seatId,jdbcType=INTEGER}
+  </update>
+  <select id="selectBySchedule" resultMap="BaseResultMap" statementType="PREPARED">
+    Select * FROM SEAT  A WHERE A.schedule_id  = #{schedule}
+  </select>
+</mapper>

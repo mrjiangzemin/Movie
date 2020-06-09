@@ -3,6 +3,8 @@ package com.service.imp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.entity.NCUUser;
+import com.mapper.NCUUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -19,6 +21,9 @@ public class UserServiceImp implements IUserService{
 
 	@Autowired
 	private UserMapper usermapper;
+
+	@Autowired
+	private NCUUserMapper ncuUserMapper;
 	
 	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	@Override
@@ -87,7 +92,16 @@ public class UserServiceImp implements IUserService{
 	public List<User> findUserLikeName(String name) {
 		return this.usermapper.findUserLikeName(name);
 	}
-	
-	
-	
+
+
+	@Override
+	public List<NCUUser> countAny(String openId) {
+		return ncuUserMapper.selectNCUUserByOpenId(openId);
+	}
+
+	@Override
+	public Integer addUser(NCUUser ncuUser) {
+
+		return ncuUserMapper.insertSelective(ncuUser);
+	}
 }
