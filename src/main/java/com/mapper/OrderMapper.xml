@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<select id="findOrderByOpenId" statementType="PREPARED" resultMap="BaseResultMap">
 		SELECT *
-		FROM ORDER A
+		FROM orderinfo A
 		WHERE A.user_id = (SELECT B.user_id FROM user B WHERE B.openid = #{openId})
 	</select>
 </mapper>
