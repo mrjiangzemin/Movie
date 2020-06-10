@@ -70,7 +70,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateOrderStateToRefunded" parameterType="java.lang.String">
 		update orderinfo set order_state = 2 where order_id = #{order_id}
 	</update>
-	<select id="findOrderByOpenId" statementType="PREPARED" resultMap="BaseResultMap">
+	<select id="findOrderByOpenId" statementType="PREPARED" resultMap="OrderResultMap">
 		SELECT a.*,s.schedule_id as schedule_id2,s.hall_id,s.movie_id,s.schedule_price,s.schedule_startTime,s.schedule_state
 		FROM orderinfo A LEFT JOIN schedule s on A.schedule_id = s.schedule_id
 		WHERE A.user_id = (SELECT B.user_id FROM user B WHERE B.openid = #{openId});
