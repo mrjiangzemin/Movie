@@ -1,8 +1,12 @@
 package com.service.imp;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.JSONObject;
+import com.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -88,6 +92,16 @@ public class OrderServiceImp implements IOrderService{
 
 	@Override
 	public Integer addOrders(Order order) {
+		String useid = new Long(order.getUser_id()).toString();
+				String order_id = "";
+				Date date = new Date();
+				SimpleDateFormat dateFormat = new SimpleDateFormat("YYYYMMdd");
+				order_id += dateFormat.format(date);
+				order_id += useid;
+				order_id += order.getSeat_id();
+				order_id += order.getSchedule_id();
+				order.setOrder_id(order_id);
+				order.setOrder_time(new Date());
 		return this.orderMapper.addOrders(order);
 	}
 

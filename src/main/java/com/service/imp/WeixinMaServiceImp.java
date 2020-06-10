@@ -18,6 +18,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WeixinMaServiceImp implements WeixinMaService {
 
@@ -88,8 +90,8 @@ public class WeixinMaServiceImp implements WeixinMaService {
             logger.error(e.getMessage());
             throw new RuntimeException(e.getMessage());
         }
-
-
+        List<NCUUser> ncuUsers = iUserService.countAny(session.getOpenid());
+        wxMaAuthResult.getUserInfo().setUser_id(ncuUsers.get(0).getUserId().toString());
         return wxMaAuthResult;
     }
 }

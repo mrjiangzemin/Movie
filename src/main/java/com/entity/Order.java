@@ -19,7 +19,8 @@ public class Order {
 	private String seat_id; //座位id
 	private User order_user;   //所属用户对象
 	private Schedule order_schedule; //所属电影场次
-
+	private Movie movie;
+	private Cinema cinema;
 	public Order(){
 
 	}
@@ -31,6 +32,22 @@ public class Order {
 		this.order_state = order_state;
 		this.order_price = order_price;
 		this.order_time = order_time;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
+	public Cinema getCinema() {
+		return cinema;
+	}
+
+	public void setCinema(Cinema cinema) {
+		this.cinema = cinema;
 	}
 
 	public String getOrder_id() {
