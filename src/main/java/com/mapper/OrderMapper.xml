@@ -12,7 +12,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="order_price" column="order_price" javaType="java.lang.Integer"/>
 		<result property="order_time" column="order_time" javaType="java.util.Date"/>
 	</resultMap>
-	
+
+	<resultMap type="com.entity.Order" id="OrderResultMap">
+		<id property="order_id" column="order_id" javaType="java.lang.String"/>
+		<result property="order_position" column="order_position" javaType="java.lang.String"/>
+		<result property="order_state" column="order_state" javaType="java.lang.Integer"/>
+		<result property="schedule_id" column="schedule_id" javaType="long"/>
+		<result property="user_id" column="user_id" javaType="long"/>
+		<result property="order_price" column="order_price" javaType="java.lang.Integer"/>
+		<result property="order_time" column="order_time" javaType="java.util.Date"/>
+		<association property="order_schedule" javaType="com.entity.Schedule">
+			<id property="schedule_id" column="schedule_id2" javaType="long"/>
+			<result property="hall_id" column="hall_id" javaType="long"/>
+			<result property="movie_id" column="movie_id" javaType="long"/>
+			<result property="schedule_price" column="schedule_price" javaType="java.lang.Integer"/>
+			<result property="schedule_remain" column="schedule_remain" javaType="java.lang.Integer"/>
+			<result property="schedule_startTime" column="schedule_startTime" javaType="java.lang.String"/>
+			<result property="schedule_state" column="schedule_state" javaType="java.lang.Integer"/>
+		</association>
+	</resultMap>
 	<select id="findOrderById" parameterType="java.lang.String" resultMap="BaseResultMap">
 		select * from orderinfo where order_id = #{order_id}
 	</select>
@@ -53,8 +71,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update orderinfo set order_state = 2 where order_id = #{order_id}
 	</update>
 	<select id="findOrderByOpenId" statementType="PREPARED" resultMap="BaseResultMap">
-		SELECT *
-		FROM orderinfo A
-		WHERE A.user_id = (SELECT B.user_id FROM user B WHERE B.openid = #{openId})
+		SELECT a.*,s.schedule_id as schedule_id2,s.hall_id,s.movie_id,s.schedule_price,s.schedule_startTime,s.schedule_state
+		FROM orderinfo A LEFT JOIN schedule s on A.schedule_id = s.schedule_id
+		WHERE A.user_id = (SELECT B.user_id FROM user B WHERE B.openid = #{openId});
 	</select>
 </mapper>
